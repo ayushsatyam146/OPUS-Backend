@@ -1,3 +1,0 @@
-void main(void) {
-    printf("Hello world from %d years. \n", 2038 - 2021);
-}
