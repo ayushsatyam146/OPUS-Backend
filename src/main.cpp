@@ -79,7 +79,7 @@ private:
     char Lookahead() { return Peek(1); }
 
     void Next() { _position++; }
-    
+
 public:
     Lexer(std::string text){
         _text = text;
@@ -87,10 +87,11 @@ public:
 
     SyntaxToken Lex()
     {
-        if (_position >= _text.length())
-            return *new SyntaxToken(SyntaxKind::EndOfFileToken, _position, "\0", NULL);
-
         int start = _position;
+
+        if (_position >= _text.length()){
+            return *new SyntaxToken(SyntaxKind::EndOfFileToken, _position, "\0", NULL);
+        }
 
         if ( isdigit(Current()) ) {
             while (isdigit(Current())) Next();
@@ -137,8 +138,7 @@ public:
             case ')':
                 return *new SyntaxToken(SyntaxKind::CloseParenthesisToken, _position++, ")", NULL);
             case '&':
-                if (Lookahead() == '&')
-                {
+                if (Lookahead() == '&') {
                     _position += 2;
                     return *new SyntaxToken(SyntaxKind::AmpersandAmpersandToken, start, "&&", NULL);
                 }
