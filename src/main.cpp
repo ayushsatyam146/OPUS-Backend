@@ -57,119 +57,236 @@ public:
         Value = value; 
     }
 
+    SyntaxToken()
+    {
+        Kind = BadToken;
+        Position = 0;
+        Text = "";
+        Value = 0; 
+    }
+
     std::vector<SyntaxNode> Children;
     std::vector<SyntaxNode> GetChildren(){
         return Children;
     } 
 };
 
-class Lexer{
-private:    
-    std::string _text;
-    int _position;
+std::string GetText(SyntaxKind kind) {
+    switch (kind)
+    {
+        case SyntaxKind::PlusToken:
+            return "+";
+        case SyntaxKind::MinusToken:
+            return "-";
+        case SyntaxKind::StarToken:
+            return "*";
+        case SyntaxKind::SlashToken:
+            return "/";
+        case SyntaxKind::BangToken:
+            return "!";
+        case SyntaxKind::EqualsToken:
+            return "=";
+        case SyntaxKind::AmpersandAmpersandToken:
+            return "&&";
+        case SyntaxKind::PipePipeToken:
+            return "||";
+        case SyntaxKind::EqualsEqualsToken:
+            return "==";
+        case SyntaxKind::BangEqualsToken:
+            return "!=";
+        case SyntaxKind::OpenParenthesisToken:
+            return "(";
+        case SyntaxKind::CloseParenthesisToken:
+            return ")";
+        case SyntaxKind::FalseKeyword:
+            return "false";
+        case SyntaxKind::TrueKeyword:
+            return "true";
+        default:
+            return "null";
+    }
+}
 
-    char Peek(int offset){
-        int index = _position + offset;
-        if(index >= _text.size()) return '\0';
-        return _text[index];
+SyntaxKind GetKeywordKind(std::string text)
+{
+    if(text == "true"){
+        return SyntaxKind::TrueKeyword;
+    }
+    else if(text == "false"){
+        return SyntaxKind::FalseKeyword;
+    }
+    else {
+        return SyntaxKind::IdentifierToken;
+    }
+}
+
+class Lexer {
+
+private:
+    std::string _text;
+    int _position = 0;
+    int _start;
+    SyntaxKind _kind;
+    int _value;
+
+    void ReadWhiteSpace() {
+        while (Current() == ' ') {
+            _position++;
+        }
+        _kind = SyntaxKind::WhitespaceToken;
     }
 
-    char Current() { return Peek(0); }
+    void ReadNumberToken() { 
+        while (isdigit(Current())) {
+            _position++;
+        }
+        int length = _position - _start;
+        std::string text = _text.substr(_start, length);
+        int value = stoi(text);
+        _value = value;
+        _kind = SyntaxKind::NumberToken;
+    }
 
-    char Lookahead() { return Peek(1); }
-
-    void Next() { _position++; }
+    void ReadIdentifierOrKeyword() {
+        while (isalpha(Current())) _position++;
+        int length = _position - _start;
+        std::string text = _text.substr(_start, length);
+        _kind = GetKeywordKind(text);
+    }
+    
+    char Peek(int offset){
+        int index = _position + offset;
+        if (index >= _text.length()) return '\0';
+        return _text[index];
+    }
+    char Current() {return Peek(0);}
+    char Lookahead() {return Peek(1);}
 
 public:
     Lexer(std::string text){
         _text = text;
-    }
+    }    
 
     SyntaxToken Lex()
     {
-        int start = _position;
+        _start = _position;
+        _kind = SyntaxKind::BadToken;
+        _value = 0;
 
-        if (_position >= _text.length()){
-            return *new SyntaxToken(SyntaxKind::EndOfFileToken, _position, "\0", NULL);
-        }
-
-        if ( isdigit(Current()) ) {
-            while (isdigit(Current())) Next();
-            int length = _position - start;
-            std::string text = _text.substr(start, length);
-
-            // do exception handling for stoi function in case text doesn't resolves to int
-            int value = stoi(text);
-            return *new SyntaxToken(SyntaxKind::NumberToken, start, text, value);
-        }
-
-        if (Current() == ' ') {
-            while (Current() == ' ') Next();
-            int length = _position - start;
-            std::string text = _text.substr(start, length);
-            return *new SyntaxToken(SyntaxKind::WhitespaceToken, start, text, NULL);
-        }
-
-        if ( isalpha(Current()) ) {
-            while (isalpha(Current())) Next();
-            int length = _position - start;
-            std::string text = _text.substr(start, length); 
-            if(text == "true"){
-                return *new SyntaxToken(SyntaxKind::TrueKeyword, start, text, NULL);
-            } else if(text == "false"){
-                return *new SyntaxToken(SyntaxKind::FalseKeyword, start, text, NULL);
-            } else{
-                return *new SyntaxToken(SyntaxKind::IdentifierToken, start, text, NULL);
-            }
-        }
-
-        switch (Current())
-        {
+        switch (Current()) {
+            case '\0':
+                _kind = SyntaxKind::EndOfFileToken; 
+                break;
             case '+':
-                return *new SyntaxToken(SyntaxKind::PlusToken, _position++, "+", NULL);
+                _kind = SyntaxKind::PlusToken;
+                _position++; 
+                break;
             case '-':
-                return *new SyntaxToken(SyntaxKind::MinusToken, _position++, "-", NULL);
+                _kind = SyntaxKind::MinusToken;
+                _position++;
+                break;
             case '*':
-                return *new SyntaxToken(SyntaxKind::StarToken, _position++, "*", NULL);
+                _kind = SyntaxKind::StarToken;
+                _position++;
+                break;
             case '/':
-                return *new SyntaxToken(SyntaxKind::SlashToken, _position++, "/", NULL);
+                _kind = SyntaxKind::SlashToken;
+                _position++;
+                break;
             case '(':
-                return *new SyntaxToken(SyntaxKind::OpenParenthesisToken, _position++, "(", NULL);
+                _kind = SyntaxKind::OpenParenthesisToken;
+                _position++;
+                break;
             case ')':
-                return *new SyntaxToken(SyntaxKind::CloseParenthesisToken, _position++, ")", NULL);
+                _kind = SyntaxKind::CloseParenthesisToken;
+                _position++;
+                break;
             case '&':
                 if (Lookahead() == '&') {
+                    _kind = SyntaxKind::AmpersandAmpersandToken;
                     _position += 2;
-                    return *new SyntaxToken(SyntaxKind::AmpersandAmpersandToken, start, "&&", NULL);
+                    break;
                 }
                 break;
             case '|':
                 if (Lookahead() == '|') {
+                    _kind = SyntaxKind::PipePipeToken;
                     _position += 2;
-                    return *new SyntaxToken(SyntaxKind::PipePipeToken, start, "||", NULL);
+                    break;
                 }
                 break;
             case '=':
-                if (Lookahead() == '=') {
-                    _position += 2;
-                    return *new SyntaxToken(SyntaxKind::EqualsEqualsToken, start, "==", NULL);
-                } else {
-                    _position += 1;
-                    return *new SyntaxToken(SyntaxKind::EqualsToken, start, "=", NULL);
+                _position++;
+                if (Current() != '=') {
+                    _kind = SyntaxKind::EqualsToken;
                 }
+                else {
+                    _position++;
+                    _kind = SyntaxKind::EqualsEqualsToken;
+                }
+                break;
             case '!':
-                if (Lookahead() == '=') {
-                    _position += 2;
-                    return *new SyntaxToken(SyntaxKind::BangEqualsToken, start, "!=", NULL);
-                } else {
-                    _position += 1;
-                    return *new SyntaxToken(SyntaxKind::BangToken, start, "!", NULL);
+                _position++;
+                if (Current() != '=') {
+                    _kind = SyntaxKind::BangToken;
                 }
-        } 
-    }
+                else {
+                    _kind = SyntaxKind::BangEqualsToken;
+                    _position++;
+                }
+                break;
+            case '0': case '1': case '2': case '3': case '4':
+            case '5': case '6': case '7': case '8': case '9':
+                ReadNumberToken();
+                break;
+            case ' ':
+            case '\t':
+            case '\n':
+            case '\r':
+                ReadWhiteSpace();
+                break;
+            default:
+                if (isalpha(Current())) {
+                    ReadIdentifierOrKeyword();
+                }
+                else if ((Current() == ' ')) {
+                    ReadWhiteSpace();
+                }
+                else {
+                    _position++;
+                }
+                break;
+        }
+
+        int length = _position - _start;
+        std::string text = GetText(_kind); 
+
+        if (text == "null") text = _text.substr(_start, length); 
+        return *new SyntaxToken(_kind, _start, text, _value);
+    } 
+    
 };
 
-
 int main(){
+    std::string text;
+    // text = "123 + 18";
+    std::vector <SyntaxToken> tokens;
+    Lexer lexer(text);
+    SyntaxToken token;
+    
+    while (token.Kind != SyntaxKind::EndOfFileToken){
+        token = lexer.Lex();
+        if( token.Kind != SyntaxKind::WhitespaceToken &&
+            token.Kind != SyntaxKind::BadToken) 
+        {
+            tokens.push_back(token);
+        }
+    } 
+
+    // For printing tokens for test 
+    // for(int i = 0;i < tokens.size(); i++){
+    //     SyntaxToken tok = tokens[i];
+    //     std::cout<<"["<<tok.Kind<<", "<<tok.Position<<", "<<tok.Text<<", "<<tok.Value<<"]\n";
+    // }
     return 0;
 }
