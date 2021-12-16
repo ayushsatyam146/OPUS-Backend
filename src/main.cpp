@@ -19,11 +19,8 @@ int main(){
             tokens.push_back(token);
         }
     } 
-
-    // // For printing tokens for test 
-    for(int i = 0;i < tokens.size(); i++){
-        SyntaxToken tok = tokens[i];
-        std::cout<<"["<<tok.Kind<<", "<<tok.Text<<"]\n";
-    }
+     
+    //tokens array contains all the tokens of the input after lexing
+    
     return 0;
 }
