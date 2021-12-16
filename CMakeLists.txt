@@ -4,6 +4,9 @@ project(test_proj)
 
 add_executable(app 
 src/main.cpp 
+src/lib/lexer.cpp
+src/lib/SyntaxNode.cpp
+src/lib/SyntaxToken.cpp
 )
 
 set(EXECUTABLE_OUTPUT_PATH src)
