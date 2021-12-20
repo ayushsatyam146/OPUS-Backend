@@ -1,3 +1,4 @@
+#pragma once
 #include "ExpressionSyntax.hpp"
 #include "SyntaxToken.hpp"
 
