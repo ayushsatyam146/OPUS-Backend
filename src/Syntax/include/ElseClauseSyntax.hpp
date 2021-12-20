@@ -7,4 +7,5 @@ public:
     SyntaxToken ElseKeyword;
     StatementSyntax ElseStatement;
     ElseClauseSyntax(SyntaxToken elseKeyword, StatementSyntax elseStatement);
+    ElseClauseSyntax();
 };

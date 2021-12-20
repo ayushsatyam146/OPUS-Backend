@@ -5,3 +5,5 @@ ElseClauseSyntax::ElseClauseSyntax(SyntaxToken elseKeyword, StatementSyntax else
     ElseKeyword = elseKeyword;
     ElseStatement = elseStatement;
 }
+
+ElseClauseSyntax::ElseClauseSyntax() {}
