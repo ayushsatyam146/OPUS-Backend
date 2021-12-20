@@ -2,8 +2,8 @@
 #include "ExpressionSyntax.hpp"
 #include "SyntaxToken.hpp"
 
-class BinaryExpressionSyntax : public ExpressionSyntax
-{
+class BinaryExpressionSyntax : public ExpressionSyntax{
+public:
     ExpressionSyntax Left;
     SyntaxToken OperatorToken;
     ExpressionSyntax Right;

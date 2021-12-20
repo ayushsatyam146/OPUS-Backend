@@ -4,6 +4,7 @@
 #include "ExpressionSyntax.hpp"
 
 class ForStatementSyntax : public StatementSyntax {
+public:
     SyntaxToken Keyword;
     SyntaxToken Identifier;
     SyntaxToken EqualsToken;
