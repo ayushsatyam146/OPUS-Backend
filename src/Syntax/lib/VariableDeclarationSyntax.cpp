@@ -7,3 +7,13 @@ VariableDeclarationSyntax::VariableDeclarationSyntax(SyntaxToken keyword, Syntax
     EqualsToken = equalsToken;
     Initializer = initializer;
 }  
+
+std::vector<SyntaxNode> VariableDeclarationSyntax::GetChildren(){
+    std::vector<SyntaxNode> ChildrenNode{
+        Keyword,
+        Identifier,
+        EqualsToken,
+        Initializer
+    };
+    return ChildrenNode;
+}

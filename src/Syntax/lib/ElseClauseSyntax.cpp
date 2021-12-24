@@ -7,3 +7,11 @@ ElseClauseSyntax::ElseClauseSyntax(SyntaxToken elseKeyword, StatementSyntax else
 }
 
 ElseClauseSyntax::ElseClauseSyntax() {}
+
+std::vector<SyntaxNode> ElseClauseSyntax::GetChildren(){
+    std::vector<SyntaxNode> ChildrenNode{
+        ElseKeyword,
+        ElseStatement
+    };
+    return ChildrenNode;
+}

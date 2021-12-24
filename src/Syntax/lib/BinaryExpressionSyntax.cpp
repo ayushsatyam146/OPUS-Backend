@@ -6,3 +6,12 @@ BinaryExpressionSyntax::BinaryExpressionSyntax(ExpressionSyntax left, SyntaxToke
     OperatorToken = operatorToken;
     Right = right;
 }
+
+std::vector<SyntaxNode> BinaryExpressionSyntax::GetChildren(){
+    std::vector<SyntaxNode> ChildrenNode{
+        Left,
+        OperatorToken,
+        Right,
+    };
+    return ChildrenNode;
+}

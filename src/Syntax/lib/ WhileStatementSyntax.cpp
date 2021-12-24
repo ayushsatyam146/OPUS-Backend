@@ -6,3 +6,12 @@ WhileStatementSyntax::WhileStatementSyntax(SyntaxToken whileKeyword, ExpressionS
     Condition = condition;
     Body = body;
 }
+
+std::vector<SyntaxNode> WhileStatementSyntax::GetChildren(){
+    std::vector<SyntaxNode> ChildrenNode{
+        WhileKeyword,
+        Condition,
+        Body
+    };
+    return ChildrenNode;
+}

@@ -6,3 +6,12 @@ AssignmentExpressionSyntax::AssignmentExpressionSyntax(SyntaxToken identifierTok
     EqualsToken = equalsToken;
     Expression = expression;
 }
+
+std::vector<SyntaxNode> AssignmentExpressionSyntax::GetChildren(){
+    std::vector<SyntaxNode> ChildrenNode{
+        IdentifierToken,
+        EqualsToken,
+        Expression
+    };
+    return ChildrenNode;
+}

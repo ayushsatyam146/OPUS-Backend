@@ -10,3 +10,16 @@ ForStatementSyntax::ForStatementSyntax(SyntaxToken keyword, SyntaxToken identifi
     UpperBound = upperBound;
     Body = body;
 }
+
+std::vector<SyntaxNode> ForStatementSyntax::GetChildren(){
+    std::vector<SyntaxNode> ChildrenNode{
+        Keyword,
+        Identifier,
+        EqualsToken,
+        LowerBound,
+        ToKeyword,
+        UpperBound,
+        Body
+    };
+    return ChildrenNode;
+}

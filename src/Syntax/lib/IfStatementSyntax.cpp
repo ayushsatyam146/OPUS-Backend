@@ -7,3 +7,13 @@ IfStatementSyntax::IfStatementSyntax(SyntaxToken ifKeyword, ExpressionSyntax con
     ThenStatement = thenStatement;
     ElseClause = elseClause;
 } 
+
+std::vector<SyntaxNode> IfStatementSyntax::GetChildren(){
+    std::vector<SyntaxNode> ChildrenNode{
+        IfKeyword,
+        Condition,
+        ThenStatement,
+        ElseClause
+    };
+    return ChildrenNode;
+}

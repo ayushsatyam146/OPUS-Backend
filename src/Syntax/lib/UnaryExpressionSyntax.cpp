@@ -5,3 +5,11 @@ UnaryExpressionSyntax::UnaryExpressionSyntax(SyntaxToken operatorToken, Expressi
     OperatorToken = operatorToken;
     Operand = operand;
 } 
+
+std::vector<SyntaxNode> UnaryExpressionSyntax::GetChildren(){
+    std::vector<SyntaxNode> ChildrenNode{
+        OperatorToken,
+        Operand
+    };
+    return ChildrenNode;
+}

@@ -5,3 +5,10 @@ LiteralExpressionSyntax::LiteralExpressionSyntax(SyntaxToken literalToken, int v
     LiteralToken = literalToken;
     Value = value;
 }
+
+std::vector<SyntaxNode> LiteralExpressionSyntax::GetChildren(){
+    std::vector<SyntaxNode> ChildrenNode{
+        LiteralToken
+    };
+    return ChildrenNode;
+}

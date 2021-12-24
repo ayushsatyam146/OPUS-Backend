@@ -6,3 +6,12 @@ ParenthesizedExpressionSyntax::ParenthesizedExpressionSyntax(SyntaxToken openPar
     Expression = expression;
     CloseParenthesisToken = closeParenthesisToken;
 }
+
+std::vector<SyntaxNode> ParenthesizedExpressionSyntax::GetChildren(){
+    std::vector<SyntaxNode> ChildrenNode{
+        OpenParenthesisToken,
+        Expression,
+        CloseParenthesisToken
+    };
+    return ChildrenNode;
+}
