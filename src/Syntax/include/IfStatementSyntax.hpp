@@ -17,4 +17,5 @@ public:
         ThenStatement = thenStatement;
         ElseClause = elseClause;
     } 
+    std::vector<SyntaxNode> GetChildren();
 };

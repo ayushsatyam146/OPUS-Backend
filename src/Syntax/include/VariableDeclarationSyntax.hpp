@@ -11,4 +11,5 @@ public:
     ExpressionSyntax Initializer;
 
     VariableDeclarationSyntax(SyntaxToken keyword, SyntaxToken identifier, SyntaxToken equalsToken, ExpressionSyntax initializer); 
+    std::vector<SyntaxNode> GetChildren();
 };

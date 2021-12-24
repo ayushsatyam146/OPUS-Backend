@@ -8,4 +8,5 @@ public:
     int Value;
 
     LiteralExpressionSyntax(SyntaxToken literalToken, int value);
+    std::vector<SyntaxNode> GetChildren();
 };

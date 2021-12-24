@@ -9,4 +9,5 @@ public:
     ExpressionSyntax Right;
     
     BinaryExpressionSyntax(ExpressionSyntax left,SyntaxToken operatorToken, ExpressionSyntax right);
+    std::vector<SyntaxNode> GetChildren();
 };

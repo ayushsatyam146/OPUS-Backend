@@ -13,4 +13,5 @@ public:
     ExpressionSyntax UpperBound;
     StatementSyntax Body;
     ForStatementSyntax(SyntaxToken keyword, SyntaxToken identifier, SyntaxToken equalsToken, ExpressionSyntax lowerBound, SyntaxToken toKeyword, ExpressionSyntax upperBound, StatementSyntax body);
+    std::vector<SyntaxNode> GetChildren();
 };

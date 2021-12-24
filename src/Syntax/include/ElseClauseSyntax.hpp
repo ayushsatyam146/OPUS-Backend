@@ -8,4 +8,5 @@ public:
     StatementSyntax ElseStatement;
     ElseClauseSyntax(SyntaxToken elseKeyword, StatementSyntax elseStatement);
     ElseClauseSyntax();
+    std::vector<SyntaxNode> GetChildren();
 };

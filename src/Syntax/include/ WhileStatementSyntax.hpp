@@ -9,4 +9,5 @@ public:
     ExpressionSyntax Condition;
     StatementSyntax Body;
     WhileStatementSyntax(SyntaxToken whileKeyword, ExpressionSyntax condition, StatementSyntax body);
+    std::vector<SyntaxNode> GetChildren();
 };

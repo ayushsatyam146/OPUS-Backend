@@ -9,4 +9,5 @@ public:
     SyntaxToken CloseParenthesisToken;
 
     ParenthesizedExpressionSyntax(SyntaxToken openParenthesisToken, ExpressionSyntax expression, SyntaxToken closeParenthesisToken);    
+    std::vector<SyntaxNode> GetChildren();
 };

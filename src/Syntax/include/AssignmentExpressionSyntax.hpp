@@ -9,4 +9,5 @@ public:
     ExpressionSyntax Expression;
 
     AssignmentExpressionSyntax(SyntaxToken identifierToken, SyntaxToken equalsToken, ExpressionSyntax expression);
+    std::vector<SyntaxNode> GetChildren();
 };
