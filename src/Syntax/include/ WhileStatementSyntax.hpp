@@ -3,7 +3,7 @@
 #include "ExpressionSyntax.hpp"
 #include "SyntaxToken.hpp"
 
-class WhileStatementSyntax : StatementSyntax {
+class WhileStatementSyntax : public StatementSyntax {
 public:
     SyntaxToken WhileKeyword;
     ExpressionSyntax Condition;

@@ -2,7 +2,7 @@
 #include "SyntaxNode.hpp"
 #include<string>
 
-class SyntaxToken : SyntaxNode{
+class SyntaxToken : public SyntaxNode{
 public:    
 
     SyntaxKind Kind ;
