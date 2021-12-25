@@ -7,5 +7,6 @@ public:
     StatementSyntax Statement;
     SyntaxToken EndOfFileToken;
     CompilationUnitSyntax(StatementSyntax statement, SyntaxToken endOfFileToken);
+    CompilationUnitSyntax();
     std::vector<SyntaxNode> GetChildren();
 };

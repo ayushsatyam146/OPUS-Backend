@@ -6,6 +6,11 @@ LiteralExpressionSyntax::LiteralExpressionSyntax(SyntaxToken literalToken, int v
     Value = value;
 }
 
+LiteralExpressionSyntax::LiteralExpressionSyntax(SyntaxToken literalToken){
+    Kind = SyntaxKind::LiteralExpression;
+    LiteralToken = literalToken; 
+}
+
 std::vector<SyntaxNode> LiteralExpressionSyntax::GetChildren(){
     std::vector<SyntaxNode> ChildrenNode{
         LiteralToken

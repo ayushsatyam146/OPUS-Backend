@@ -1,10 +1,11 @@
-#include "SyntaxTree.hpp"
+#include "../include/SyntaxTree.hpp"
+#include "../include/Parser.hpp"
+#include "../include/CompilationUnitSyntax.hpp"
 
 SyntaxTree::SyntaxTree(std::string text){
     Parser parser(text);
-    CompilationUnitSyntax root = parser.ParseCompilationUnit(); 
-    Text = text; 
-    Root = root;
+    Root = parser.ParseCompilationUnit(); 
+    Text = text;  
 }
 
 std::vector<SyntaxToken> SyntaxTree::ParseTokens(std::string text){

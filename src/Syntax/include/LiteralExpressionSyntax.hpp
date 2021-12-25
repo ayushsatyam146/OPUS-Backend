@@ -5,8 +5,9 @@
 class LiteralExpressionSyntax : public ExpressionSyntax {
 public:    
     SyntaxToken LiteralToken;
-    int Value;
+    int Value = 0;
 
     LiteralExpressionSyntax(SyntaxToken literalToken, int value);
+    LiteralExpressionSyntax(SyntaxToken literalToken);
     std::vector<SyntaxNode> GetChildren();
 };

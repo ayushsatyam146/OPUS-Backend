@@ -2,7 +2,7 @@
 #include "ExpressionSyntax.hpp"
 #include "SyntaxToken.hpp"
 
-class UnaryExpressionSyntax : ExpressionSyntax {
+class UnaryExpressionSyntax : public ExpressionSyntax {
 public:
     SyntaxToken OperatorToken;
     ExpressionSyntax Operand;

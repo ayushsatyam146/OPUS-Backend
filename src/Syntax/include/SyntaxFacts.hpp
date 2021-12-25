@@ -4,10 +4,10 @@
 
 class SyntaxFacts  {
 public:
-    int GetUnaryOperatorPrecedence(SyntaxKind kind);
-    int GetBinaryOperatorPrecedence(SyntaxKind kind);
-    SyntaxKind GetKeywordKind(std::string text);
-    std::string GetText(SyntaxKind kind);
-    std::vector<SyntaxKind> SyntaxFacts::GetBinaryOperatorKinds();
-    std::vector<SyntaxKind> SyntaxFacts::GetUnaryOperatorKinds();
+    static int GetUnaryOperatorPrecedence(SyntaxKind kind);
+    static int GetBinaryOperatorPrecedence(SyntaxKind kind);
+    static SyntaxKind GetKeywordKind(std::string text);
+    static std::string GetText(SyntaxKind kind);
+    static std::vector<SyntaxKind> SyntaxFacts::GetBinaryOperatorKinds();
+    static std::vector<SyntaxKind> SyntaxFacts::GetUnaryOperatorKinds();
 };

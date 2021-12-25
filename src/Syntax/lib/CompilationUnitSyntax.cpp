@@ -7,6 +7,8 @@ CompilationUnitSyntax::CompilationUnitSyntax(StatementSyntax statement, SyntaxTo
     Kind = SyntaxKind::CompilationUnit;
 } 
 
+CompilationUnitSyntax::CompilationUnitSyntax(){}
+
 std::vector<SyntaxNode> CompilationUnitSyntax::GetChildren(){
     std::vector<SyntaxNode> ChildrenNode{
         Statement,
