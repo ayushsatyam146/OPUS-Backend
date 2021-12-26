@@ -11,9 +11,7 @@ int SyntaxFacts::GetUnaryOperatorPrecedence(SyntaxKind kind)
     kind == SyntaxKind::BangToken
     )
         return 6;
-
-    else
-        return 0;
+ 
     return 0;
 }
 
@@ -40,9 +38,7 @@ int SyntaxFacts::GetBinaryOperatorPrecedence(SyntaxKind kind)
 
     else if (kind==SyntaxKind::PipePipeToken)
         return 1;
-
-    else 
-        return 0;
+ 
     return 0;
 }
 
@@ -87,6 +83,7 @@ std::vector<SyntaxKind> SyntaxFacts::GetUnaryOperatorKinds(){
             PositiveUnaryOperatorPrecedenceKinds.push_back(kind.first);
         }
     }
+    return PositiveUnaryOperatorPrecedenceKinds;
 }
 
 std::vector<SyntaxKind> SyntaxFacts::GetBinaryOperatorKinds(){
@@ -96,6 +93,7 @@ std::vector<SyntaxKind> SyntaxFacts::GetBinaryOperatorKinds(){
             PositiveBinaryOperatorPrecedenceKinds.push_back(kind.first);
         }
     }
+    return PositiveBinaryOperatorPrecedenceKinds;
 }
 
 std::string SyntaxFacts::GetText(SyntaxKind kind){

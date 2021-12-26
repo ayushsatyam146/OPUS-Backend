@@ -22,6 +22,7 @@ src/Syntax/lib/SyntaxFacts.cpp
 src/Syntax/lib/SyntaxNode.cpp 
 src/Syntax/lib/SyntaxToken.cpp 
 src/Syntax/lib/SyntaxTree.cpp 
+src/Syntax/lib/SyntaxKind.cpp
 src/Syntax/lib/UnaryExpressionSyntax.cpp 
 src/Syntax/lib/VariableDeclarationSyntax.cpp 
 src/Syntax/lib/WhileStatementSyntax.cpp 
