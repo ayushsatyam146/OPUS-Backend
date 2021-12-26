@@ -5,6 +5,5 @@
 class SyntaxNode {
 public:    
     SyntaxKind Kind; 
-    std::vector<SyntaxNode> GetChildren();
-    SyntaxNode(){}
+    std::vector<SyntaxNode> GetChildren(); 
 };

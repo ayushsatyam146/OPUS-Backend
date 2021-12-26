@@ -1,4 +1,4 @@
-#include "CompilationUnitSyntax.hpp"
+#include "../include/CompilationUnitSyntax.hpp"
 
 CompilationUnitSyntax::CompilationUnitSyntax(StatementSyntax statement, SyntaxToken endOfFileToken)
 {
@@ -8,6 +8,7 @@ CompilationUnitSyntax::CompilationUnitSyntax(StatementSyntax statement, SyntaxTo
 } 
 
 CompilationUnitSyntax::CompilationUnitSyntax(){}
+
 
 std::vector<SyntaxNode> CompilationUnitSyntax::GetChildren(){
     std::vector<SyntaxNode> ChildrenNode{

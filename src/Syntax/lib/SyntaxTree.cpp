@@ -1,6 +1,5 @@
 #include "../include/SyntaxTree.hpp"
-#include "../include/Parser.hpp"
-#include "../include/CompilationUnitSyntax.hpp"
+#include "../include/Parser.hpp" 
 
 SyntaxTree::SyntaxTree(std::string text){
     Parser parser(text);
@@ -18,4 +17,5 @@ std::vector<SyntaxToken> SyntaxTree::ParseTokens(std::string text){
         }
         parseTokens.push_back(token);
     }
+    return parseTokens;
 }

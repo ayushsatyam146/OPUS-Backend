@@ -1,3 +1,4 @@
+#pragma once
 #include "SyntaxNode.hpp"
 #include "SyntaxToken.hpp"
 #include "StatementSyntax.hpp"
@@ -10,3 +11,4 @@ public:
     CompilationUnitSyntax();
     std::vector<SyntaxNode> GetChildren();
 };
+

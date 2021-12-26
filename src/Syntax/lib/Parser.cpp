@@ -125,10 +125,10 @@ ExpressionSyntax Parser::ParseAssignmentExpression(){
         ExpressionSyntax right = ParseAssignmentExpression();
         return *new AssignmentExpressionSyntax(identifierToken, operatorToken, right);
     }
-    return ParseBinaryExpression();
+    return ParseBinaryExpression(0);
 }
 
-ExpressionSyntax Parser::ParseBinaryExpression(int parentPrecedence = 0){
+ExpressionSyntax Parser::ParseBinaryExpression(int parentPrecedence ){
     ExpressionSyntax left;
     int unaryOperatorPrecedence = SyntaxFacts::GetUnaryOperatorPrecedence(Current().Kind);
     if (unaryOperatorPrecedence != 0 && unaryOperatorPrecedence >= parentPrecedence)

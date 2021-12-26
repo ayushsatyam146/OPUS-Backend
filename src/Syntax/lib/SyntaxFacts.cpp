@@ -4,47 +4,46 @@
 
 int SyntaxFacts::GetUnaryOperatorPrecedence(SyntaxKind kind)
 {
-    switch (kind)
-    {
-        case SyntaxKind::PlusToken:
-        case SyntaxKind::MinusToken:
-        case SyntaxKind::BangToken:
-            return 6;
 
-        default:
-            return 0;
-    }
+    if (
+    kind == SyntaxKind::PlusToken ||
+    kind == SyntaxKind::MinusToken ||
+    kind == SyntaxKind::BangToken
+    )
+        return 6;
+
+    else
+        return 0;
+    return 0;
 }
 
 int SyntaxFacts::GetBinaryOperatorPrecedence(SyntaxKind kind)
 {
-    switch (kind)
-    {
-        case SyntaxKind::StarToken:
-        case SyntaxKind::SlashToken:
-            return 5;
+    if (kind==SyntaxKind::StarToken || kind==SyntaxKind::SlashToken)
+        return 5;
 
-        case SyntaxKind::PlusToken:
-        case SyntaxKind::MinusToken:
-            return 4;
+    else if (kind==SyntaxKind::PlusToken || kind==SyntaxKind::MinusToken)
+        return 4;
 
-        case SyntaxKind::EqualsEqualsToken:
-        case SyntaxKind::BangEqualsToken:
-        case SyntaxKind::LessToken:
-        case SyntaxKind::LessOrEqualsToken:
-        case SyntaxKind::GreaterToken:
-        case SyntaxKind::GreaterOrEqualsToken:
-            return 3;
+    else if (
+    kind==SyntaxKind::EqualsEqualsToken ||
+    kind==SyntaxKind::BangEqualsToken ||
+    kind==SyntaxKind::LessToken ||
+    kind==SyntaxKind::LessOrEqualsToken ||
+    kind==SyntaxKind::GreaterToken ||
+    kind==SyntaxKind::GreaterOrEqualsToken 
+    )
+        return 3;
 
-        case SyntaxKind::AmpersandAmpersandToken:
-            return 2;
+    else if (kind==SyntaxKind::AmpersandAmpersandToken)
+        return 2;
 
-        case SyntaxKind::PipePipeToken:
-            return 1;
+    else if (kind==SyntaxKind::PipePipeToken)
+        return 1;
 
-        default:
-            return 0;
-    }
+    else 
+        return 0;
+    return 0;
 }
 
 SyntaxKind SyntaxFacts::GetKeywordKind(std::string text)

@@ -1,3 +1,4 @@
+#pragma once
 #include "CompilationUnitSyntax.hpp"
 #include "lexer.hpp"
 

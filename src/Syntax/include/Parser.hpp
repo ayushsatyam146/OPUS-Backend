@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 #include <vector>
 #include "lexer.hpp"
@@ -39,7 +40,7 @@ private:
     ExpressionStatementSyntax ParseExpressionStatement();
     ExpressionSyntax ParseExpression();
     ExpressionSyntax ParseAssignmentExpression();
-    ExpressionSyntax ParseBinaryExpression(int parentPrecedence = 0);
+    ExpressionSyntax ParseBinaryExpression(int parentPrecedence);
     ExpressionSyntax ParsePrimaryExpression();
     ExpressionSyntax ParseParenthesizedExpression();
     ExpressionSyntax ParseBooleanLiteral();
