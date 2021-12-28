@@ -4,15 +4,14 @@
 
 #include "Syntax/include/Parser.hpp"
 #include "Syntax/include/SyntaxTree.hpp"
-#include "Syntax/include/SyntaxFacts.hpp"
+#include "Syntax/include/SyntaxNode.hpp"
 
 int main(){
     std::string inputText;
-    inputText = "1 + 2 + 3";
-    
+    inputText = "1";
     SyntaxTree syntaxTree(inputText);
 
-    std::string PrintValue = SyntaxFacts::PrettyPrint("",syntaxTree.Root,"",true);
+    std::string PrintValue = SyntaxNode::PrettyPrint("",syntaxTree.Root,"",true);
     std::cout<<PrintValue<<"\n......................................\n";
     
     return 0;

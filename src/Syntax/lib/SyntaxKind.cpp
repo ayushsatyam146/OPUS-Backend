@@ -1,7 +1,7 @@
 #include "../include/SyntaxKind.hpp"
 
 
-const std::map<SyntaxKind,std::string> SyntaxKindText = {   
+std::map<SyntaxKind,std::string> SyntaxKindText = {   
     {SyntaxKind::BadToken,"BadToken"},
     {SyntaxKind::EndOfFileToken,"EndOfFileToken"},
     {SyntaxKind::WhitespaceToken,"WhitespaceToken"},

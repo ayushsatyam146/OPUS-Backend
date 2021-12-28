@@ -61,4 +61,4 @@ enum SyntaxKind {
 };
 
 
-extern const std::map<SyntaxKind,std::string> SyntaxKindText;
+extern std::map<SyntaxKind,std::string> SyntaxKindText;
