@@ -13,4 +13,5 @@ public:
     static std::string GetText(SyntaxKind kind);
     static std::vector<SyntaxKind> GetBinaryOperatorKinds();
     static std::vector<SyntaxKind> GetUnaryOperatorKinds();
+    static std::string PrettyPrint(std::string writer, SyntaxNode node, std::string indent , bool isLast);
 };
